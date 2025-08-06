@@ -2,14 +2,10 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 import os
-
 app = Flask(__name__)
 CORS(app)
-
 AZURE_OPENAI_ENDPOINT = "https://prane-mam4onew-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview"
 AZURE_OPENAI_KEY = "C2liXOipuErI7ktzzgMt25ouGrTHe6FLRr9lxUaoEoJ4f2f02DeFJQQJ99BEACHYHv6XJ3w3AAAAACOGNMcO"
-
-# Plant recommendation system prompt
 SYSTEM_PROMPT = """
 You are Green-Buy's helpful plant assistant. Help customers choose plants by:
 1. Understanding their living space (indoor/outdoor, light conditions)
@@ -19,7 +15,6 @@ You are Green-Buy's helpful plant assistant. Help customers choose plants by:
 5. Considering any specific preferences (flowering, air-purifying, etc.)
 Provide specific plant recommendations with brief care instructions.
 """
-
 @app.route('/api/ask', methods=['GET', 'POST'])
 def ask():
     if request.method == 'GET':
@@ -35,7 +30,6 @@ def ask():
     if not user_message:
         return jsonify({'error': 'No message provided'}), 400
 
-    # Enhance the user message with location if provided
     if location:
         user_message = f"User location: {location}. Query: {user_message}"
 
@@ -67,4 +61,5 @@ def health_check():
     return jsonify({'status': 'healthy'})
 
 if __name__ == '__main__':
+
     app.run(debug=True, port=5000)
