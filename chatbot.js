@@ -4,7 +4,6 @@ document.getElementById('chatbot-send').onclick = async function() {
     if (!msg) return;
     addMessage('You', msg);
     input.value = '';
-    // Optionally, get user's location (ask permission)
     let location = '';
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
@@ -34,10 +33,11 @@ async function sendToBot(msg, location) {
         body: JSON.stringify({ message: msg, location: location })
     });
     const data = await res.json();
-    document.getElementById('chatbot-messages').lastChild.remove(); // Remove 'Thinking...'
+    document.getElementById('chatbot-messages').lastChild.remove(); 
     if (data.reply) {
         addMessage('Bot', data.reply);
     } else {
         addMessage('Bot', 'Sorry, I could not process your request.');
     }
+
 }
