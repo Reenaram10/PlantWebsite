@@ -4,8 +4,8 @@ import requests
 import os
 app = Flask(__name__)
 CORS(app)
-AZURE_OPENAI_ENDPOINT = "https://prane-mam4onew-eastus2.cognitiveservices.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview"
-AZURE_OPENAI_KEY = "C2liXOipuErI7ktzzgMt25ouGrTHe6FLRr9lxUaoEoJ4f2f02DeFJQQJ99BEACHYHv6XJ3w3AAAAACOGNMcO"
+AZURE_OPENAI_ENDPOINT = ""
+AZURE_OPENAI_KEY = ""
 SYSTEM_PROMPT = """
 You are Green-Buy's helpful plant assistant. Help customers choose plants by:
 1. Understanding their living space (indoor/outdoor, light conditions)
